@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
+
+    <color name="ForwardBlack">#06010E</color>
+    <color name="MiddleBLue">#003185</color>
+    <color name="EndWhite">#727EC1</color>
+    <color name="BLue">#03A9F4</color>
+
+    <color name="anthracite">#2B292E</color>
+    <color name="colorCardView">#AFA4BF</color>
+
+    <color name="FireBirdtheme">#C12020</color>
+
+    <color name="TextOnDashboard">#B7D8EA</color>
+    <color name="TextOnDashboarddown1">#65B7D8EA</color>
+
+    <color name="White">#FFFFFF</color>
+    <color name="transp">#00FFFFFF</color>
+</resources>
