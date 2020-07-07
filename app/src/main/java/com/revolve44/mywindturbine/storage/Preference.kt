@@ -25,21 +25,95 @@ object AppPreferences {
         editor.apply()
     }
 
-    var temp: String
+    var temp: Float
         // custom getter to get a preference of a desired type, with a predefined default value
-        get() = preferences.getString("temp","two" ).toString()
+        get() = preferences.getFloat("temp",1f )
 
         // custom setter to save a preference back to preferences file
         set(value) = preferences.edit {
-            it.putString("temp", value)
+            it.putFloat("temp", value)
         }
 
-//    var temp: Boolean
+    var wind: Float
+        // custom getter to get a preference of a desired type, with a predefined default value
+        get() = preferences.getFloat("wind",1f )
+
+        // custom setter to save a preference back to preferences file
+        set(value) = preferences.edit {
+            it.putFloat("wind", value)
+        }
+
+    var direction: String
+        // custom getter to get a preference of a desired type, with a predefined default value
+        get() = preferences.getString("direction","Suk" ).toString()
+
+        // custom setter to save a preference back to preferences file
+        set(value) = preferences.edit {
+            it.putString("direction", value)
+        }
+
+    var directionAngle: Float
+        // custom getter to get a preference of a desired type, with a predefined default value
+        get() = preferences.getFloat("directionAngle",0f )
+
+        // custom setter to save a preference back to preferences file
+        set(value) = preferences.edit {
+            it.putFloat("directionAngle", value)
+        }
+
+    var currentPower: Float
+        // custom getter to get a preference of a desired type, with a predefined default value
+        get() = preferences.getFloat("currentpower",0f )
+
+        // custom setter to save a preference back to preferences file
+        set(value) = preferences.edit {
+            it.putFloat("currentpower", value)
+        }
+
+    var correction : Float
+        // custom getter to get a preference of a desired type, with a predefined default value
+        get() = preferences.getFloat("correction",1f )
+
+        // custom setter to save a preference back to preferences file
+        set(value) = preferences.edit {
+            it.putFloat("correction", value)
+        }
+
+    var radius : Float
+        // custom getter to get a preference of a desired type, with a predefined default value
+        get() = preferences.getFloat("radius",100f )
+
+        // custom setter to save a preference back to preferences file
+        set(value) = preferences.edit {
+            it.putFloat("radius", value)
+        }
+
+    var angleanim : Float
+        // custom getter to get a preference of a desired type, with a predefined default value
+        get() = preferences.getFloat("angleanim",1f )
+
+        // custom setter to save a preference back to preferences file
+        set(value) = preferences.edit {
+            it.putFloat("angleanim", value)
+        }
+
+    var cityX: String
+        // custom getter to get a preference of a desired type, with a predefined default value
+        get() = preferences.getString("city","error" ).toString()
+
+        // custom setter to save a preference back to preferences file
+        set(value) = preferences.edit {
+            it.putString("city", value)
+        }
+
+//    var calibrationdata : Float
 //        // custom getter to get a preference of a desired type, with a predefined default value
-//        get() = preferences.getBoolean(IS_FIRST_RUN_PREF.first, IS_FIRST_RUN_PREF.second)
+//        get() = preferences.getFloat("calibrationdata",1f )
 //
 //        // custom setter to save a preference back to preferences file
 //        set(value) = preferences.edit {
-//            it.putBoolean(IS_FIRST_RUN_PREF.first, value)
+//            it.putFloat("calibrationdata", value)
 //        }
+
+
 }

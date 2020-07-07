@@ -6,7 +6,6 @@ import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.revolve44.mywindturbine.storage.AppPreferences
-import com.revolve44.mywindturbine.storage.Prefs
 //import com.revolve44.fragments22.storage.SharedPref
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -47,7 +46,7 @@ class Api: AppCompatActivity() {
 
    // val s = Prefs(ctx)
 //    lateinit var s: Prefs
-     private var s: Prefs = Prefs(this)
+    // private var s: Prefs = Prefs(this)
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     fun startcall() {
@@ -99,7 +98,10 @@ class Api: AppCompatActivity() {
 
                         val weatherResponse = response.body()!!
                         //main variables
-                        AppPreferences.temp =  (weatherResponse.main.temp.toString())
+                        AppPreferences.temp =  (weatherResponse.main.temp)
+                        AppPreferences.wind = (weatherResponse.wind.speed)
+                        AppPreferences.directionAngle = (weatherResponse.wind.deg)
+                        AppPreferences.cityX = (weatherResponse.name)
 //                        SharedPref.setTemp(weatherResponse.main.temp, mContext)
 //                        SharedPref.setSecondaryData(
 //                            weatherResponse.name,

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/hommes"
     android:clickable="true"
     android:background="@drawable/backside"
     >
@@ -36,7 +37,7 @@
                         android:layout_weight="1"
                         android:orientation="vertical">
                         <TextView
-                            android:id="@+id/CurrentPower"
+                            android:id="@+id/CurrentPowerX"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/montserrat"
@@ -55,7 +56,7 @@
                             android:layout_gravity="center"
                             android:layout_weight="5"
                             android:gravity="center"
-                            android:text="watts"
+                            android:text="Watts"
                             android:textColor="@color/TextOnDashboarddown1"
                             android:textSize="10sp">
 
@@ -146,6 +147,7 @@
                                 android:textAlignment="center"
                                 android:textColor="@color/TextOnDashboard"
                                 android:textSize="40sp"
+                                android:onClick="directionWind"
                                 tools:ignore="RtlCompat">
 
                             </TextView>
