@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MyWindTurbine2</string>
+    <string name="app_name">My Wind Turbine</string>
     <string name="title_home">Home</string>
     <string name="title_calibr">Calibration</string>
     <string name="Settings">Settings</string>

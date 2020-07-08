@@ -1,5 +1,6 @@
 package com.revolve44.mywindturbine
 
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
@@ -8,12 +9,14 @@ import android.view.View
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.replace
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.snackbar.Snackbar
 import com.revolve44.mywindturbine.storage.AppPreferences
 import com.revolve44.mywindturbine.ui.dashboard.DashboardFragment
 import com.revolve44.mywindturbine.ui.home.HomeFragment
 import com.revolve44.mywindturbine.ui.notifications.NotificationsFragment
+import com.revolve44.mywindturbine.ui.setturbine.LocationActivity
 import com.revolve44.mywindturbine.utils.AirBender
 import com.revolve44.mywindturbine.utils.Api
 import io.feeeei.circleseekbar.CircleSeekBar
@@ -62,15 +65,12 @@ class MainActivity : AppCompatActivity() {
         }
 
         //open and .hide fragment in one moment
-        fm.beginTransaction().add(R.id.nav_host_fragment, fragment2, "2").hide(fragment2).commit()
-        fm.beginTransaction().add(R.id.nav_host_fragment, fragment3, "3").hide(fragment3).commit()
+        fm.beginTransaction().add(R.id.nav_host_fragment, fragment2, "2").replace(R.id.nav_host_fragment, fragment2).commit()
+        fm.beginTransaction().add(R.id.nav_host_fragment, fragment3, "3").replace(R.id.nav_host_fragment, fragment3).commit()
         fm.beginTransaction().add(R.id.nav_host_fragment, fragment1, "1").commit()
         AppPreferences.init(this)
+        //-----------------------Startup App--------------------------------
         LaunchPad()
-
-
-
-
 
     }
 
@@ -81,7 +81,14 @@ class MainActivity : AppCompatActivity() {
             {
                 airbender.aang()
                 airbender.direction()
-                homefrag.refreshData()
+                airbender.TimeManipulation()
+                //homefrag.refreshData()
+
+                Handler().postDelayed(
+                    {
+                        homefrag.refreshData()
+                    },1000
+                )
             },1000
         )
 
@@ -92,18 +99,21 @@ class MainActivity : AppCompatActivity() {
         BottomNavigationView.OnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.navigation_home -> {
-                    fm.beginTransaction().hide(active).show(fragment1).commit()
                     active = fragment1
+                    fm.beginTransaction().replace(R.id.nav_host_fragment, active).show(fragment1).commit()
+
                     return@OnNavigationItemSelectedListener true
                 }
                 R.id.navigation_dashboard -> {
-                    fm.beginTransaction().hide(active).show(fragment2).commit()
                     active = fragment2
+                    fm.beginTransaction().replace(R.id.nav_host_fragment, active).show(fragment2).commit()
+
                     return@OnNavigationItemSelectedListener true
                 }
                 R.id.navigation_notifications -> {
-                    fm.beginTransaction().hide(active).show(fragment3).commit()
                     active = fragment3
+                    fm.beginTransaction().replace(R.id.nav_host_fragment, active).show(fragment3).commit()
+
                     return@OnNavigationItemSelectedListener true
                 }
 
@@ -118,6 +128,12 @@ class MainActivity : AppCompatActivity() {
             "Wind Direction: "+AppPreferences.directionAngle+"°", // Message to show
             Snackbar.LENGTH_LONG // How long to display the message.
         ).show()
+
+    }
+
+    fun tonewact(view: View) {
+        val intent = Intent(this, LocationActivity::class.java)
+        startActivity(intent)
 
     }
 }

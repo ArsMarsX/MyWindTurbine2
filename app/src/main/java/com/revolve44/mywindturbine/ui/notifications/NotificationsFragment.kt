@@ -3,6 +3,7 @@ package com.revolve44.mywindturbine.ui.notifications
 import android.content.Context
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -41,7 +42,7 @@ class NotificationsFragment : Fragment() {
 
 
         mSeekbar.maxProcess = 200
-        mSeekbar.curProcess = 100
+        //mSeekbar.curProcess = 100
 
 
 
@@ -59,27 +60,29 @@ class NotificationsFragment : Fragment() {
             //calibrationdata = ((mSeekbar.curProcess /100).toFloat())
 
             curcalibrationTV?.setText(""+mSeekbar.curProcess+" %")
-
-            aftercalibrationpowerTV?.setText(""+(((mSeekbar.curProcess)/100f)*curpow).roundToInt())
+            AppPreferences.currentPower = ((mSeekbar.curProcess)/100f)*curpow
+            aftercalibrationpowerTV?.setText(""+(AppPreferences.currentPower).roundToInt())
             //aftercalibrationpowerTV?.setText(""+(((mSeekbar.curProcess)/100)*curpow))
+            AppPreferences.progressinSeekBar = mSeekbar.curProcess
             checker = true
 
         }
 
-
-
-
-
-
         //CircleSeekBar.
-
         return root
     }
+    override fun onResume() {
+        Log.d("LIFECYCLE Calibration", "onresume")
+        super.onResume()
+        mSeekbar.curProcess = AppPreferences.progressinSeekBar
+    }
+
 
     override fun onPause() {
-        if (checker == true){
-            AppPreferences.currentPower = calibrationdata.toFloat()
-        }
+//        if (checker == true){
+//            AppPreferences.currentPower = calibrationdata.toFloat()
+//        }
+        Log.d("LIFECYCLE Calibration", "pause")
 
         super.onPause()
     }

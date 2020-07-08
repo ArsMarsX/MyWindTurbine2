@@ -5,6 +5,7 @@ import android.os.Build
 import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import com.google.gson.Gson
 import com.revolve44.mywindturbine.storage.AppPreferences
 //import com.revolve44.fragments22.storage.SharedPref
 import okhttp3.OkHttpClient
@@ -21,6 +22,7 @@ import java.util.*
 
 class Api: AppCompatActivity() {
     //private val engine2: CalcEngine = CalcEngine()
+    private val airbender: AirBender = AirBender()
     //Variables
     private var NominalPower = 0f//???????????????????????????????? = 0f
     var CurrentPower = 0f
@@ -130,44 +132,44 @@ class Api: AppCompatActivity() {
                 metric,
                 AppId
             )
-//            forecastCall.enqueue(object : Callback<WeatherForecastResponse?> {
-//                override fun onResponse(
-//                    forecastCall: Call<WeatherForecastResponse?>,
-//                    response: Response<WeatherForecastResponse?>
-//                ) {
-//                    if (response.code() == 200) {
-//                        val weatherResponse = response.body()!!
-//                        val list = weatherResponse.list
-//                        if (dataMap.size == 0) {
-////                            Log.d("z -1 ", "$z ")
-////                            for (wr in list) {
-////                                if (z <= 20) {
-////                                    CurrentPowerHashMap =
-////                                        NominalPower - NominalPower * (wr.clouds.all / 100) * 0.8f // чисто разницу лучше не оставлять, а домножанать на 0.8 например чтобы при макс. облач. не было нуля
-////                                    TimeHashMap = wr.dt.toLong() * 1000
-////                                    dataMap[TimeHashMap] = CurrentPowerHashMap
-////                                    Log.d(
-////                                        "Datamap 1->",
-////                                        "$TimeHashMap $CurrentPowerHashMap"
-////                                    )
-////                                    z++
-////                                }
-////                            }
-//                            Log.d("Datamap 1>>>>>", "" + dataMap)
-//                        }
-//                        //convert to string using gson
-//                        val gson = Gson()
-//                        //SharedPref.setjsonDataMap(gson.toJson(dataMap), mContext)
-//                    }
-//                }
-//
-//                override fun onFailure(
-//                    forecastCall: Call<WeatherForecastResponse?>,
-//                    t: Throwable
-//                ) {
-//                    Log.e("ERROR", "retrofit")
-//                }
-//            })
+            forecastCall.enqueue(object : Callback<WeatherForecastResponse?> {
+                override fun onResponse(
+                    forecastCall: Call<WeatherForecastResponse?>,
+                    response: Response<WeatherForecastResponse?>
+                ) {
+                    if (response.code() == 200) {
+                        val weatherResponse = response.body()!!
+                        val list = weatherResponse.list
+                        if (dataMap.size == 0) {
+                            Log.d("z -1 ", "$z ")
+                            for (wr in list) {
+                                if (z <= 20) {
+                                    CurrentPowerHashMap = airbender.yangchen(wr.wind.speed)// чисто разницу лучше не оставлять, а домножанать на 0.8 например чтобы при макс. облач. не было нуля
+                                    TimeHashMap = wr.dt.toLong() * 1000
+                                    dataMap[TimeHashMap] = CurrentPowerHashMap
+                                    Log.d(
+                                        "Datamap 1->",
+                                        "$TimeHashMap $CurrentPowerHashMap"
+                                    )
+                                    z++
+                                }
+                            }
+                            Log.d("Datamap 1>>>>>", "" + dataMap)
+                        }
+                        //convert to string using gson
+                        val gson = Gson()
+                        AppPreferences.jsonDataMap = gson.toJson(dataMap)
+
+                    }
+                }
+
+                override fun onFailure(
+                    forecastCall: Call<WeatherForecastResponse?>,
+                    t: Throwable
+                ) {
+                    Log.e("ERROR", "retrofit")
+                }
+            })
         }
 
     companion object {

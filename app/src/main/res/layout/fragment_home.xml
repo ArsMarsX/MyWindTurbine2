@@ -112,7 +112,6 @@
                                 android:fontFamily="@font/montserrat"
                                 android:gravity="center"
                                 android:text="2"
-
                                 android:textColor="@color/TextOnDashboard"
                                 android:textSize="40sp"
                                 tools:ignore="RtlCompat">
@@ -218,7 +217,7 @@
                 <LinearLayout
                     android:id="@+id/forcardview"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="290dp"
                     android:orientation="vertical"
                     android:layout_weight="1">
                     <HorizontalScrollView
@@ -233,6 +232,7 @@
                                 android:id="@+id/line_chart"
                                 android:layout_width="2000dp"
                                 android:layout_height="match_parent"
+                                android:layout_marginLeft="50dp"
 
                                 />
                         </LinearLayout>

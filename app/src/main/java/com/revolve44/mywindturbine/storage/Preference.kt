@@ -70,14 +70,14 @@ object AppPreferences {
             it.putFloat("currentpower", value)
         }
 
-    var correction : Float
-        // custom getter to get a preference of a desired type, with a predefined default value
-        get() = preferences.getFloat("correction",1f )
-
-        // custom setter to save a preference back to preferences file
-        set(value) = preferences.edit {
-            it.putFloat("correction", value)
-        }
+//    var correction : Float
+//        // custom getter to get a preference of a desired type, with a predefined default value
+//        get() = preferences.getFloat("correction",1f )
+//
+//        // custom setter to save a preference back to preferences file
+//        set(value) = preferences.edit {
+//            it.putFloat("correction", value)
+//        }
 
     var radius : Float
         // custom getter to get a preference of a desired type, with a predefined default value
@@ -105,6 +105,52 @@ object AppPreferences {
         set(value) = preferences.edit {
             it.putString("city", value)
         }
+
+    var progressinSeekBar : Int
+        // custom getter to get a preference of a desired type, with a predefined default value
+        get() = preferences.getInt("progressinDiagram",100 )
+
+        // custom setter to save a preference back to preferences file
+        set(value) = preferences.edit {
+            it.putInt("progressinDiagram", value)
+        }
+
+    var jsonDataMap: String
+        // custom getter to get a preference of a desired type, with a predefined default value
+        get() = preferences.getString("jsonDataMap","0" ).toString()
+
+        // custom setter to save a preference back to preferences file
+        set(value) = preferences.edit {
+            it.putString("jsonDataMap", value)
+        }
+
+    var chartLegend: String
+        // custom getter to get a preference of a desired type, with a predefined default value
+        get() = preferences.getString("chartLegend","error" ).toString()
+
+        // custom setter to save a preference back to preferences file
+        set(value) = preferences.edit {
+            it.putString("chartLegend", value)
+        }
+    var chartValue: String
+        // custom getter to get a preference of a desired type, with a predefined default value
+        get() = preferences.getString("chartValue","error" ).toString()
+
+        // custom setter to save a preference back to preferences file
+        set(value) = preferences.edit {
+            it.putString("chartValue", value)
+        }
+
+    var powerefficiency : Float // Betz Limit
+        // custom getter to get a preference of a desired type, with a predefined default value
+        get() = preferences.getFloat("powerefficiency",0.5f )
+
+        // custom setter to save a preference back to preferences file
+        set(value) = preferences.edit {
+            it.putFloat("powerefficiency", value)
+        }
+
+
 
 //    var calibrationdata : Float
 //        // custom getter to get a preference of a desired type, with a predefined default value

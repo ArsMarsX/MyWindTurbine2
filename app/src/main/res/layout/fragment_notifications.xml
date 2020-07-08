@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/calibrations"
     android:orientation="vertical"
     android:clickable="true"
     android:background="@drawable/backside"
@@ -85,11 +86,35 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/backside3"
+        android:orientation="vertical"
+        android:layout_margin="10dp"
         android:layout_weight="5">
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Calibrate your current wind turbine">
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat"
+            android:layout_margin="10dp"
+            android:textColor="@color/TextOnDashboard"
+            android:textSize="15sp"
+            android:layout_weight="1"
+            android:text="Calibrate forecasting power output of your current wind turbine, if needed">
+
+        </TextView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/montserrat"
+            android:foregroundGravity="center_vertical"
+            android:text="This is optional function"
+            android:textAlignment="center"
+            android:textColor="@color/TextOnDashboard"
+            android:textSize="20sp"
+            tools:ignore="RtlCompat">
 
         </TextView>
     </LinearLayout>

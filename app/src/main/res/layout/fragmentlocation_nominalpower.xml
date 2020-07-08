@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#12161C"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_weight="3"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:src="@drawable/windturbdiam">
+
+                </ImageView>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:fontFamily="@font/montserrat"
+                        android:gravity="center"
+                        android:layout_weight="1"
+                        android:textColor="@color/White"
+                        android:text="Set Diameter: \n[meters]"
+                        android:textSize="20sp"
+                        android:textStyle="bold">
+                    </TextView>
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
+                        android:hint="[meters]"
+                        android:textColor="@color/White"
+                        android:inputType="number"
+                        android:outlineAmbientShadowColor="@color/BLue"
+                        android:outlineSpotShadowColor="@color/BLue"
+                        android:textColorHighlight="@color/BLue"
+                        android:shadowColor="@color/BLue"
+                        android:textAlignment="center"
+                        android:textColorHint="@color/White">
+
+                    </EditText>
+
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="3">
+
+
+
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:fontFamily="@font/montserrat"
+                android:gravity="center"
+                android:textColor="@color/White"
+                android:text="Set Nominal Power of your wind turbine: "
+                android:textSize="20sp"
+                android:textStyle="bold">
+
+            </TextView>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:hint="[Watts]"
+                android:shadowColor="@color/BLue"
+                android:textColor="@color/BLue"
+                android:inputType="number"
+                android:textAlignment="center"
+                android:textColorHint="@color/White">
+
+            </EditText>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:fontFamily="@font/montserrat"
+                android:gravity="center"
+                android:textColor="@color/White"
+                android:text="Set 'cut-in speed' and 'rated output power': "
+                android:textSize="20sp"
+                android:textStyle="bold">
+
+            </TextView>
+
+            <com.crystal.crystalrangeseekbar.widgets.CrystalRangeSeekbar
+                android:id="@+id/rangeSeekbar1"
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                app:left_thumb_color="#F0F5FF"
+                app:right_thumb_color="#F0F5FF"
+                app:left_thumb_color_pressed="#A5BDED"
+                app:right_thumb_color_pressed="#A5BDED"
+                app:bar_color="#8BA0AA"
+                app:bar_highlight_color="#035BF4"
+                />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textMin1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/montserrat"
+                    android:gravity="center"
+                    android:textColor="@color/BLue"
+                    android:textStyle="bold">
+
+                </TextView>
+
+                <TextView
+                    android:id="@+id/textMax1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/montserrat"
+                    android:gravity="center"
+                    android:textColor="@color/BLue"
+                    android:textStyle="bold">
+
+                </TextView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:fontFamily="@font/montserrat"
+                    android:gravity="center"
+                    android:textColor="@color/White"
+                    android:text="Set 'cut-in speed' and 'rated output power': "
+                    android:textSize="20sp"
+                    android:textStyle="bold">
+
+                </TextView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:text="save changes">
+                </Button>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:fontFamily="@font/montserrat"
+                    android:gravity="center"
+                    android:textColor="@color/White"
+                    android:text="Theory "
+                    android:textSize="20sp"
+                    android:textStyle="bold">
+
+                </TextView>
+
+
+                <ImageView
+                    android:layout_gravity="top"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/windcurve">
+
+                </ImageView>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+</ScrollView>
