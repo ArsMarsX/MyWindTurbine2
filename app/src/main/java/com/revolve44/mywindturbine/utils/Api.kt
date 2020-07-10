@@ -99,6 +99,7 @@ class Api: AppCompatActivity() {
 
 
                         val weatherResponse = response.body()!!
+                        Log.d("API ", " how many times ? ")
                         //main variables
                         AppPreferences.temp =  (weatherResponse.main.temp)
                         AppPreferences.wind = (weatherResponse.wind.speed)

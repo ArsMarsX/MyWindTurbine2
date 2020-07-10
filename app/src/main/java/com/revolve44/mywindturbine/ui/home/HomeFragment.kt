@@ -1,9 +1,9 @@
 package com.revolve44.mywindturbine.ui.home
 
 //import com.revolve44.mywindturbine.storage.AppPreferences.wind
-import android.annotation.SuppressLint
 import android.content.ContentValues.TAG
 import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
@@ -16,26 +16,30 @@ import android.view.animation.RotateAnimation
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout.OnRefreshListener
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import com.revolve44.mywindturbine.MainActivity
 import com.revolve44.mywindturbine.R
 import com.revolve44.mywindturbine.storage.AppPreferences
 import lecho.lib.hellocharts.gesture.ZoomType
 import lecho.lib.hellocharts.model.*
 import lecho.lib.hellocharts.view.LineChartView
-import java.lang.reflect.Type
 import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.math.roundToInt
 
-class HomeFragment : Fragment(){
+class HomeFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
 
     private lateinit var homeViewModel: HomeViewModel
+    private lateinit var mSwipeRefreshLayout: SwipeRefreshLayout
     //private var mSwipeRefreshLayout: SwipeRefreshLayout? = null
-
+    //private val mainact: MainActivity = MainActivity()
 
 
 //    var lineChart: LineChartView? = null
@@ -95,6 +99,16 @@ class HomeFragment : Fragment(){
 
         lineChart = root.findViewById(R.id.line_chart)
 
+        mSwipeRefreshLayout = root.findViewById(R.id.swipecontainer)
+        mSwipeRefreshLayout.setOnRefreshListener(this as OnRefreshListener)
+
+        mSwipeRefreshLayout.nestedScrollAxes
+
+        mSwipeRefreshLayout.setColorSchemeResources(
+            android.R.color.holo_blue_bright,
+            android.R.color.holo_red_light
+        )
+
 
 
         homeViewModel.text.observe(viewLifecycleOwner, Observer {
@@ -114,7 +128,7 @@ class HomeFragment : Fragment(){
                           + AppPreferences.direction.toString()
                 )
                 cityTV?.setText(AppPreferences.cityX.toString())
-                CurrentPowerTV?.setText(AppPreferences.currentPower.roundToInt().toString())//*
+                CurrentPowerTV?.setText((AppPreferences.currentPower*AppPreferences.coefficient).roundToInt().toString())//*
                 windTV?.setText(AppPreferences.wind.toString())
                 directionTV?.setText(AppPreferences.direction.toString())
 
@@ -409,6 +423,16 @@ class HomeFragment : Fragment(){
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.N)
+    override fun onRefresh() {
+        //refreshData(
+        //(activity as MainActivity).LaunchPad()
+//        ((MainActivity) getActivity()).FragmentMethod()
+//        mainact.LaunchPad()
+        mSwipeRefreshLayout.isRefreshing =false
+
+
+    }
 
 
 }

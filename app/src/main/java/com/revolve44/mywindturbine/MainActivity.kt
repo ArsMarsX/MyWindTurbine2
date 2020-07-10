@@ -1,11 +1,13 @@
 package com.revolve44.mywindturbine
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
 import android.view.View
+import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -65,8 +67,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         //open and .hide fragment in one moment
-        fm.beginTransaction().add(R.id.nav_host_fragment, fragment2, "2").replace(R.id.nav_host_fragment, fragment2).commit()
-        fm.beginTransaction().add(R.id.nav_host_fragment, fragment3, "3").replace(R.id.nav_host_fragment, fragment3).commit()
+        fm.beginTransaction().add(R.id.nav_host_fragment, fragment2, "2").hide( fragment2).commit()
+        fm.beginTransaction().add(R.id.nav_host_fragment, fragment3, "3").hide(fragment3).commit()
         fm.beginTransaction().add(R.id.nav_host_fragment, fragment1, "1").commit()
         AppPreferences.init(this)
         //-----------------------Startup App--------------------------------
@@ -99,21 +101,21 @@ class MainActivity : AppCompatActivity() {
         BottomNavigationView.OnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.navigation_home -> {
-                    active = fragment1
-                    fm.beginTransaction().replace(R.id.nav_host_fragment, active).show(fragment1).commit()
 
+                    fm.beginTransaction().hide( active).show(fragment1).commit()
+                    active = fragment1
                     return@OnNavigationItemSelectedListener true
                 }
                 R.id.navigation_dashboard -> {
-                    active = fragment2
-                    fm.beginTransaction().replace(R.id.nav_host_fragment, active).show(fragment2).commit()
 
+                    fm.beginTransaction().hide(active).show(fragment2).commit()
+                    active = fragment2
                     return@OnNavigationItemSelectedListener true
                 }
                 R.id.navigation_notifications -> {
-                    active = fragment3
-                    fm.beginTransaction().replace(R.id.nav_host_fragment, active).show(fragment3).commit()
 
+                    fm.beginTransaction().hide(active).show(fragment3).commit()
+                    active = fragment3
                     return@OnNavigationItemSelectedListener true
                 }
 
@@ -134,6 +136,7 @@ class MainActivity : AppCompatActivity() {
     fun tonewact(view: View) {
         val intent = Intent(this, LocationActivity::class.java)
         startActivity(intent)
-
     }
+
+
 }

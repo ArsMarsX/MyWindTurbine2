@@ -67,8 +67,41 @@ object AppPreferences {
 
         // custom setter to save a preference back to preferences file
         set(value) = preferences.edit {
-            it.putFloat("currentpower", value)
+            if (currentPower> nominalPower){
+                it.putFloat("currentpower", nominalPower)
+            }else{
+                it.putFloat("currentpower", value)
+            }
+
         }
+
+    var nominalPower: Float
+        // custom getter to get a preference of a desired type, with a predefined default value
+        get() = preferences.getFloat("nominalPower",100f )
+
+        // custom setter to save a preference back to preferences file
+        set(value) = preferences.edit {
+            it.putFloat("nominalPower", value)
+        }
+
+    var minWind: Float
+        // custom getter to get a preference of a desired type, with a predefined default value
+        get() = preferences.getFloat("minWind",100f )
+
+        // custom setter to save a preference back to preferences file
+        set(value) = preferences.edit {
+            it.putFloat("minWind", value)
+        }
+
+    var maxWind: Float
+        // custom getter to get a preference of a desired type, with a predefined default value
+        get() = preferences.getFloat("maxWind",100f )
+
+        // custom setter to save a preference back to preferences file
+        set(value) = preferences.edit {
+            it.putFloat("maxWind", value)
+        }
+
 
 //    var correction : Float
 //        // custom getter to get a preference of a desired type, with a predefined default value
@@ -81,7 +114,7 @@ object AppPreferences {
 
     var radius : Float
         // custom getter to get a preference of a desired type, with a predefined default value
-        get() = preferences.getFloat("radius",100f )
+        get() = preferences.getFloat("radius",1f )
 
         // custom setter to save a preference back to preferences file
         set(value) = preferences.edit {
@@ -148,6 +181,15 @@ object AppPreferences {
         // custom setter to save a preference back to preferences file
         set(value) = preferences.edit {
             it.putFloat("powerefficiency", value)
+        }
+
+    var coefficient : Float // Betz Limit
+        // custom getter to get a preference of a desired type, with a predefined default value
+        get() = preferences.getFloat("coefficient",1f )
+
+        // custom setter to save a preference back to preferences file
+        set(value) = preferences.edit {
+            it.putFloat("coefficient", value)
         }
 
 

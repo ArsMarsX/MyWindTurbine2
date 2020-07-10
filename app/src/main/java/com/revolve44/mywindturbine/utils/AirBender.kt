@@ -9,6 +9,10 @@ import java.util.*
 import kotlin.math.PI
 import kotlin.math.pow
 
+/////////////////////////////////////////////
+//        AirBender Engine mark 1          //
+/////////////////////////////////////////////
+//              09/07/2020
 class AirBender{
     //---Time Manipulations------------------------
     var SunPeriod = 0
@@ -38,16 +42,29 @@ class AirBender{
 
 
     fun aang(){
-        AppPreferences.currentPower =
-            (((1.23* PI*(AppPreferences.radius).pow(2)*((AppPreferences.wind).pow(3))* AppPreferences.powerefficiency)/2).toFloat())
+        // (1,23*3,14*1*1*0,5)/2
+        var curpowx =(((1.23* PI*(AppPreferences.radius).pow(2)*((AppPreferences.wind).pow(3))* AppPreferences.powerefficiency)/2).toFloat())
+
+        if (curpowx > AppPreferences.maxWind){
+            AppPreferences.currentPower = AppPreferences.nominalPower
+        }
+        if (curpowx < AppPreferences.maxWind){
+            AppPreferences.currentPower = curpowx
+        }
+
+        //AppPreferences.currentPower
         Log.d("Aang check","")
         Log.d("Result of work Aang", AppPreferences.currentPower.toString())
     }
 
     fun yangchen(windx: Float): Float{
-        var answer = (((1.23* PI*(AppPreferences.radius).pow(2)*((windx).pow(3))* AppPreferences.powerefficiency)/2)).toFloat()
-        Log.d("Aang check","")
-        Log.d("Result of work Aang", AppPreferences.currentPower.toString())
+        var answer = (((1.23* PI*(AppPreferences.radius).pow(2)*((windx).pow(3))* AppPreferences.powerefficiency)/2)*AppPreferences.coefficient).toFloat()
+
+        if (answer>AppPreferences.maxWind){
+            answer = AppPreferences.nominalPower
+        }
+
+        Log.d("Result of work Yangchen", answer.toString())
         return answer
     }
 
